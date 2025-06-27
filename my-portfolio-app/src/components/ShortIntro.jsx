@@ -4,11 +4,13 @@ import Email from "./Icons/Email";
 const ShortIntro = () => {
   return (
     <>
-      <div>
-        <PhoneNumber />
-      </div>
-      <div>
-        <Email />
+      <div className="md:flex md:flex-row md:items-center md:gap-4">
+        <div>
+          <PhoneNumber />
+        </div>
+        <div>
+          <Email />
+        </div>
       </div>
     </>
   );

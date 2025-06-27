@@ -2,6 +2,7 @@ import React from 'react'
 import HealthInsuranceProject from "../assets/HealthInsuranceProject.png";
 import EticketManagement from "../assets/EticketManagementProject.png";
 import HotelManagement from "../assets/HotelManagementProject.png";
+import MyPortfolio from "../assets/PortfolioProject.png";
 
 import Login from "../assets/ScreenListHealthInsurancePr/Login.png";
 import Signup from "../assets/ScreenListHealthInsurancePr/Signup.png";
@@ -13,7 +14,7 @@ import Profile from "../assets/ScreenListHealthInsurancePr/Profile.png";
 import Registration from "../assets/ScreenListHealthInsurancePr/Registration.png";
 
 
-import ProductHappyDemo from "../assets/VideoDemo/ProductHappyDemo.mp4";
+// import ProductHappyDemo from "../assets/VideoDemo/ProductHappyDemo.mp4";
 const ProjectData = [
     {
       id: 1,
@@ -65,7 +66,7 @@ const ProjectData = [
         videoList: [
         {
           videoName: "ProductHappyDemo",
-          videoSrc: ProductHappyDemo
+          videoSrc: "ProductHappyDemo"
         }, 
       ] 
     },
@@ -123,7 +124,32 @@ const ProjectData = [
           videoSrc: "https://www.youtube.com/embed/2Vv-bUZOq4c"
         }, 
       ] 
+    }, 
+    {
+      id: 4,
+      name: "My Portfolio",
+      techStack: "ReactJS, TailwindCSS",
+      image: MyPortfolio,
+      link: "https://github.com/ptnhan2/my-portfolio",
+      startDate: "2025-06-15",
+      endDate: "2025-06-30", 
+      description: "The project aims to build a portfolio website to showcase my skills and projects.",
+      teamSize: "1",
+      position: ["Frontend Developer"],
+      responsibilities: ["Code and design the portfolio website using ReactJS and TailwindCSS.",
+      ],
+       imageList: [{
+        imgName: "Login Page",
+        imgSrc: HealthInsuranceProject
+      },],
+      videoList: [
+        {
+          videoName: "Demo",
+          videoSrc: "https://www.youtube.com/embed/2Vv-bUZOq4c"
+        }, 
+      ] 
     }
+    
   ];
 
 export default ProjectData;

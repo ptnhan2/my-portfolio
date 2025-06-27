@@ -35,7 +35,7 @@ const Projects = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center gap-4 py-4">
+      <div className="w-full h-screen flex flex-col items-center justify-center gap-4 py-4">
         <h1>
           <TextGradient
             text="My Projects"
@@ -44,7 +44,7 @@ const Projects = () => {
             className="text-4xl font-bold"
           />
         </h1>
-        <div className="w-full flex flex-row justify-around gap-4">
+        <div className="w-full flex flex-row justify-around gap-4 ">
           <div>
             <SortButton sortType={sortType} onToggle={toggleSort} />
           </div>
@@ -56,11 +56,13 @@ const Projects = () => {
             />
           </div>
         </div>
-        {displayedProjects.map((project) => (
-          <div className="w-[80vw] h-auto">
-            <ProjectCard {...project} />
-          </div>
-        ))}
+        <div className="w-[80%] h-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+          {displayedProjects.map((project) => (
+            <div className="w-full h-auto">
+              <ProjectCard {...project} />
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );

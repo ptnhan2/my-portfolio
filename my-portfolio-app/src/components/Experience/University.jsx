@@ -3,7 +3,7 @@ import TextGradient from "../Text/TextGradient";
 const University = () => {
   return (
     <>
-      <div className="w-[90vw] h-auto px-4">
+      <div className="w-[90%] h-auto px-4">
         <div className="flex flex-row justify-center">
           <TextGradient
             text="VNUHCM - University of Science"

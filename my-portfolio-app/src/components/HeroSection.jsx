@@ -1,51 +1,76 @@
 import { Link } from "react-router-dom";
 import Avatar from "../assets/Avatar-withoutBG.png";
-import Avatar2 from "../assets/Avatar2.png";
+import Avatar2 from "../assets/ava.png";
 import Overlay01 from "../assets/Overlay01.png";
 import Overlay02 from "../assets/Overlay02.png";
-
+import Arrow from "../components/Icons/Arrow";
 import ContactButton from "./Button/ContactButton";
 import ShortIntro from "./ShortIntro";
+import socialLink from "../data/socialData";
 
 const HeroSection = () => {
   return (
     <>
-      <section>
-        <div>
-          <h1 className="font-ibm">
-            MY NAME IS <span className="font-bold">PHAN THIEN NHAN</span>
-          </h1>
-        </div>
-        <div>
-          <h2>
-            I'm a <strong> Frontend Developer </strong>based in Vietnam
-          </h2>
-        </div>
-      </section>
-      <section className="flex flex-col items-center justify-center">
-        <div className="relative w-72 h-72 mt-10">
-          <img
-            src={Overlay01}
-            alt="Avatar Overlay"
-            className=" w-full h-full "
-          />
-          <img
-            src={Avatar2}
-            alt="Avatar"
-            className="absolute inset-0 w-full h-full object-cover top-[-20px]"
-          />
-          <img
-            src={Overlay02}
-            alt="Avatar Overlay"
-            className="absolute inset-0 w-full h-full "
-          />
-        </div>
-        <div className="w-42 h-24">
-          <ContactButton />
-        </div>
-      </section>
-      <section>
-        <ShortIntro />
+      <section className="md:grid md:grid-cols-4 md:grid-rows-1 md:items-center 4 md:h-screen gap-8 px-20">
+        <section className="md:col-span-2 md:w-full md:h-[60%] md:flex md:flex-col md:items-start md:gap-8">
+          <div className="md:w-full">
+            <h1 className="font-ibm md:text-7xl">
+              MY NAME IS <span className="font-bold">PHAN THIEN NHAN...</span>
+            </h1>
+          </div>
+          <div>
+            <h2>
+              I'm a <strong> Frontend Developer </strong>based in Vietnam
+            </h2>
+          </div>
+          <div>
+            <Link to="/contact">
+              <button
+                type="submit"
+                className="text-white text-sm px-6 py-2 bg-black flex items-center gap-2"
+              >
+                Let's talk with me
+                <Arrow />
+              </button>
+            </Link>
+          </div>
+          <div>
+            <ShortIntro />
+          </div>
+        </section>
+        <section className="md:col-span-2 flex flex-row items-center justify-between">
+          <section>
+            <div className="relative w-full h-auto mt-10">
+              <img
+                src={Overlay01}
+                alt="Avatar Overlay"
+                className=" w-full h-full rotate-[2deg] top-[100px]"
+              />
+              <img
+                src={Avatar2}
+                alt="Avatar"
+                className="absolute inset-0 w-full h-full object-cover top-[-80px] left-[-20px]"
+              />
+              <img
+                src={Overlay02}
+                alt="Avatar Overlay"
+                className="absolute inset-0 w-full h-full  top-[7px]"
+              />
+            </div>
+          </section>
+
+          <section className="justify-self-end">
+            <div className="flex flex-col gap-6 justify-self-center">
+              {socialLink.map((item) => {
+                return (
+                  <Link to={item.link} target="_blank">
+                    <div className="text-2xl text-black">{item.icon}</div>
+                  </Link>
+                );
+              })}
+            </div>
+          </section>
+        </section>
       </section>
     </>
   );

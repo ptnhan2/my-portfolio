@@ -3,9 +3,7 @@ import React from "react";
 const CtaButton = ({ text }) => {
   return (
     <>
-      <button className="w-full h-auto bg-black text-white p-2 ">
-        {text}
-      </button>
+      <button className="w-full h-full bg-black text-white p-2">{text}</button>
     </>
   );
 };

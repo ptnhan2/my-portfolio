@@ -1,26 +1,32 @@
 import React from "react";
 import CtaButton from "../Button/CtaButton";
 import { Link } from "react-router-dom";
+import { AiOutlineArrowRight } from "react-icons/ai";
+
 const ProjectCard = ({ id, name, techStack, image }) => {
   return (
-    <>
-      <div className="w-full h-auto border-2 p-2 flex flex-col items-center gap-1">
-        <h1 className="font-bold text-2xl">{name}</h1>
-        <div>{techStack} </div>
-        <div className="w-full h-auto flex justify-center">
-          <img
-            src={image}
-            alt="Health Insurance Project Image"
-            className="w-full h-full object-cover"
-          />
-        </div>
-        <div className="w-[50%]">
+    <div className="w-full h-48 overflow-hidden flex flex-row items-center justify-between p-4 bg-white ">
+      {/* Left: Text Content */}
+      <div className="w-1/3 pr-4 flex flex-col justify-between h-full">
+        <div className="text-sm text-gray-600 mb-4">{techStack}</div>
+
+        <h1 className="font-bold text-xl mb-2">{name}</h1>
+        <div>
           <Link to={`/projects/${id}`}>
-            <CtaButton text="View Project" />
+            <AiOutlineArrowRight className="text-4xl text-black rotate-[-45deg] " />
           </Link>
         </div>
       </div>
-    </>
+
+      {/* Right: Image */}
+      <div className="w-72 h-full border-2 p-2">
+        <img
+          src={image}
+          alt={`${name} preview`}
+          className="w-full h-full object-contain"
+        />
+      </div>
+    </div>
   );
 };
 
