@@ -9,8 +9,11 @@ import sorting from "../utils/sorting";
 import filterByTechStack from "../utils/filterByTechStack";
 
 import TextGradient from "../components/Text/TextGradient";
-
+import { useNavigate } from "react-router-dom";
+import handleScroll from "../utils/handleScroll";
+import { useTab } from "../utils/TabContext";
 const Projects = () => {
+  
   const projects = ProjectData;
   const [sortType, setSortType] = useState("asc");
   const [sortedProjects, setSortedProjects] = useState(projects);

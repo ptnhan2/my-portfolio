@@ -7,8 +7,9 @@ import Projects from "./Projects";
 import GiftPopup from "../components/Popup/GiftPopup";
 import GiftModal from "../components/Popup/GiftModal";
 import { motion } from "framer-motion";
-import { useEffect, useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useLayoutEffect, useState, useRef } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import handleScroll from "../utils/handleScroll";
 const fadeUp = {
   hidden: { opacity: 0, y: 60 },
   visible: { opacity: 1, y: 0, transition: { duration: 2, ease: "easeOut" } },
@@ -24,9 +25,9 @@ const Home = () => {
   const [isGiftOpen, setIsGiftOpen] = useState(false);
   const [topPopupPosition, setTopPopupPosition] = useState({ x: 0, y: 0 });
   const lastMousePos = useRef({ x: 0, y: 0 });
+  const location = useLocation();
 
   useEffect(() => {
-
     const handleMouseMove = (e) => {
       lastMousePos.current = { x: e.clientX, y: e.clientY };
     };
@@ -35,6 +36,7 @@ const Home = () => {
       window.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
+
   useEffect(() => {
     const handleMouseLeave = (e) => {
       if (e.clientY <= 0) {
@@ -42,7 +44,7 @@ const Home = () => {
         // alert("run handleMouseLeave");
         // setDidAlert(!didAlert);
         console.log("show at", lastMousePos.current);
-        
+
         setTopPopupPosition(lastMousePos.current);
         setIsGiftTopPopupOpen(true);
         localStorage.setItem("popupShown", true);
@@ -112,7 +114,13 @@ const Home = () => {
         if (visible) {
           const id = visible.target.id;
           console.log("inside observer: ", visible.target);
-          navigate(`/#${id}`, { replace: true });
+          navigate(`/${id}`, { replace: true });
+
+          // const newPath = `/${id}`;
+
+          // if (location.pathname !== newPath) {
+          //   navigate(newPath, { replace: true });
+          // }
         }
       },
       {

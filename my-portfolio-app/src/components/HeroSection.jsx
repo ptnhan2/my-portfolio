@@ -8,7 +8,18 @@ import ContactButton from "./Button/ContactButton";
 import ShortIntro from "./ShortIntro";
 import socialLink from "../data/socialData";
 import handleScroll from "../utils/handleScroll";
+import { useNavigate } from "react-router-dom";
+import { useTab } from "../utils/TabContext";
 const HeroSection = () => {
+  const { setActiveTab } = useTab();
+  const navigate = useNavigate();
+  const handleOnClick = () => {
+    setActiveTab("contact");
+    // navigate("/home");
+    setTimeout(() => {
+      handleScroll("contact");
+    }, 200);
+  };
   return (
     <>
       <section className="md:grid md:grid-cols-4 md:grid-rows-1 md:items-center 4 md:h-screen gap-8 px-20">
@@ -25,7 +36,7 @@ const HeroSection = () => {
           </div>
           <div>
             <button
-              onClick={() => handleScroll("contact")}
+              onClick={() => handleOnClick()}
               type="submit"
               className="text-white text-sm px-6 py-2 bg-black flex items-center gap-2"
             >
@@ -62,9 +73,9 @@ const HeroSection = () => {
             <div className="flex flex-col gap-6 justify-self-center">
               {socialLink.map((item) => {
                 return (
-                  <Link to={item.link} target="_blank">
+                  <button to={item.link} target="_blank">
                     <div className="text-2xl text-black">{item.icon}</div>
-                  </Link>
+                  </button>
                 );
               })}
             </div>

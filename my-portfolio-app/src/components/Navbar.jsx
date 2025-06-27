@@ -1,23 +1,55 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import handleScroll from "../utils/handleScroll";
+import { useTab } from "../utils/TabContext";
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { activeTab, setActiveTab } = useTab();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const navLinks = [
-    { path: "home", label: "Home" },
-    { path: "about", label: "About" },
-    { path: "projects", label: "Projects" },
+    { label: "HOME", to: "/home", section: "home" },
+    { label: "ABOUT", to: "/about", section: "about" },
+    { label: "PROJECTS", to: "/projects", section: "projects" },
+    { label: "CONTACT", to: "/contact", section: "contact" },
 
-    { path: "contact", label: "Contact" },
-    // { path: "playground", label: "Playground" },
-    // { path: "resume", label: "Resume" },
+    // { to: "/playground", label: "PLAYGROUND", section: "playground" },
+    // { to: "/resume", label: "RESUME", section: "resume" },
   ];
+  // const handleNavigation = (link) => {
+  //   if (
+  //     location.pathname !== "/" &&
+  //     !location.pathname.includes(link.section)
+  //   ) {
+  //     // Nếu đang ở trang chi tiết như /projects/1
+  //     navigate("/");
 
-  const socialLinks = [
-    { path: "https://github.com/abdulrahman-m", label: "Github" },
-    { path: "https://www.linkedin.com/in/abdulrahman-m/", label: "Linkedin" },
-  ];
+  //     // Đợi 100ms để các section mount xong, rồi scroll
+  //     setTimeout(() => {
+  //       handleScroll(link.section);
+  //     }, 100);
+  //   } else {
+  //     // Nếu đang ở trang chính thì chỉ scroll
+  //     handleScroll(link.section);
+  //   }
+  //   setActiveTab(link.section);
+  // };
+
+  const handleClick = (link) => {
+    setActiveTab(link.section);
+    navigate(link.to);
+    setTimeout(() => {
+      handleScroll(link.section);
+    }, 200);
+  };
+
+  // useEffect(() => {
+  //   if (location.pathname === "/home") {
+  //     setActiveTab("home");
+  //   }
+  // }, [location.pathname]);
 
   return (
     <nav
@@ -25,7 +57,10 @@ const Navbar = () => {
         isOpen ? "bg-blue-500" : "bg-white"
       } p-4 fixed top-0 left-0 z-50 `}
     >
-      <button className="bg-black text-white text-4xl md:block hidden">
+      <button
+        onClick={() => handleNavigation({ section: "home" })}
+        className="bg-black text-white text-4xl md:block hidden"
+      >
         TN
       </button>
       <button
@@ -35,18 +70,23 @@ const Navbar = () => {
         {isOpen ? "X" : "Menu"}
       </button>
 
-      <ul
-        className={`flex flex-col md:block md:bg-black  ${
-          isOpen ? "block" : "hidden"
-        }`}
-      >
+      <ul className={` md:block md:bg-black  ${isOpen ? "block" : "hidden"}`}>
         {navLinks.map((link) => (
-          <li key={link.path} className="md:py-4">
+          <li key={link.section}>
             <button
-              className="text-white bg-black text-sm font-light hover:underline"
-              onClick={() => handleScroll(link.path)}
+              className="text-white bg-transparent w-full hover:text-[#B86ADF] hover:text-[#FF6C63] font-medium flex items-start md:py-6 md:px-4 border-box"
+              onClick={() => handleClick(link)}
             >
-              {link.label}
+              {activeTab === link.section ? (
+                <div className="relative inline-block grid grid-cols-1 grid-rows-1 place-items-center ">
+                  <div className=" col-start-1 row-start-1 h-1 w-full  bg-gradient-to-r from-[#B86ADF] via-[#FF6C63] to-[#FFB147]" />
+                  <div className="col-start-1 row-start-1 text-white">
+                    {link.label}
+                  </div>
+                </div>
+              ) : (
+                <div className="col-start-1 row-start-1">{link.label}</div>
+              )}
             </button>
           </li>
         ))}

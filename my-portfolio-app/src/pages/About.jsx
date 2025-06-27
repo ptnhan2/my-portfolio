@@ -17,7 +17,19 @@ import SkillTag from "../components/Experience/SkillTag";
 import skills from "../data/SkillData";
 import SkillGroup from "../components/Experience/SkillGroup";
 import handleScroll from "../utils/handleScroll";
+import { useNavigate } from "react-router-dom";
+import { useTab } from "../utils/TabContext";
+
 const About = () => {
+  const { setActiveTab } = useTab();
+  const navigate = useNavigate();
+  const handleOnClick = () => {
+    setActiveTab("projects");
+    // navigate("/home");
+    setTimeout(() => {
+      handleScroll("projects");
+    }, 200);
+  };
   return (
     <section className="w-full h-screen grid md:grid-cols-5 gap-8 px-4 items-center pr-32">
       {/* Left Column */}
@@ -80,7 +92,7 @@ const About = () => {
           ))}
         </div> */}
 
-        <div onClick={() => handleScroll("projects")} className="h-[100px]">
+        <div onClick={() => handleOnClick()} className="h-[100px]">
           <CtaButton text="View my Projects" />
         </div>
       </div>
