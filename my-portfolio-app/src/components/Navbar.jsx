@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import handleScroll from "../utils/handleScroll";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -17,13 +18,6 @@ const Navbar = () => {
     { path: "https://github.com/abdulrahman-m", label: "Github" },
     { path: "https://www.linkedin.com/in/abdulrahman-m/", label: "Linkedin" },
   ];
-
-  const handleScroll = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <nav

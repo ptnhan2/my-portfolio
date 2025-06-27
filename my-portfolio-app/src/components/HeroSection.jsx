@@ -7,7 +7,7 @@ import Arrow from "../components/Icons/Arrow";
 import ContactButton from "./Button/ContactButton";
 import ShortIntro from "./ShortIntro";
 import socialLink from "../data/socialData";
-
+import handleScroll from "../utils/handleScroll";
 const HeroSection = () => {
   return (
     <>
@@ -24,15 +24,14 @@ const HeroSection = () => {
             </h2>
           </div>
           <div>
-            <Link to="/contact">
-              <button
-                type="submit"
-                className="text-white text-sm px-6 py-2 bg-black flex items-center gap-2"
-              >
-                Let's talk with me
-                <Arrow />
-              </button>
-            </Link>
+            <button
+              onClick={() => handleScroll("contact")}
+              type="submit"
+              className="text-white text-sm px-6 py-2 bg-black flex items-center gap-2"
+            >
+              Let's talk with me
+              <Arrow />
+            </button>
           </div>
           <div>
             <ShortIntro />
