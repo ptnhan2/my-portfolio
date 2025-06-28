@@ -17,11 +17,11 @@ const Age = () => {
 
   return (
     <>
-      <div className="flex flex-row items-center gap-2">
-        <div className="bg-slate-200 p-2 rounded-full">
+      <div className="flex flex-row items-center bg-transparent border border-gray-300 text-sm hover:shadow-md transition">
+        <div className="p-2 border-r-[1px] border-gray-300">
           <AiOutlineContacts />
         </div>
-        <span>{age} years old</span>
+        <div className="px-2">{age} years old</div>
       </div>
     </>
   );

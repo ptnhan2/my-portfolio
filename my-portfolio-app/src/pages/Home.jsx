@@ -139,7 +139,7 @@ const Home = () => {
   }, []);
 
   return (
-    <section className="scroll-smooth">
+    <section className="scroll-smooth flex flex-col h-auto gap-4">
       <motion.div
         variants={fadeUp}
         initial="hidden"
@@ -173,7 +173,6 @@ const Home = () => {
         <Projects />
       </motion.div>
       <div className="h-[1px] bg-gray-300 w-3/4 mx-auto my-2" />{" "}
-      {/* page break */}
       <motion.div
         // ref={contactRef}
         variants={fadeUp}

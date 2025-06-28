@@ -56,12 +56,16 @@ const ContactForm = () => {
       {/* Header */}
       <h2 className="text-2xl font-bold mb-6">CONTACT ME</h2>
 
-      <form ref={form} className="space-y-6" onSubmit={sendEmail}>
+      <form
+        ref={form}
+        className="space-y-6 text-xs  md:text-sm"
+        onSubmit={sendEmail}
+      >
         {/* Name & Email on same row */}
-        <div className="flex gap-4">
+        <div className="flex flex-col md:flex-row  gap-4">
           {/* Name */}
-          <div className="w-1/2">
-            <label htmlFor="name" className="block mb-1">
+          <div className="md:w-1/2">
+            <label htmlFor="name" className="block mb-1 font-medium">
               NAME
             </label>
             <input
@@ -74,8 +78,8 @@ const ContactForm = () => {
           </div>
 
           {/* Email */}
-          <div className="w-1/2">
-            <label htmlFor="email" className="block mb-1">
+          <div className="md:w-1/2">
+            <label htmlFor="email" className="block mb-1 font-medium">
               EMAIL
             </label>
             <input
@@ -90,7 +94,7 @@ const ContactForm = () => {
 
         {/* Message */}
         <div>
-          <label htmlFor="message" className="block mb-1">
+          <label htmlFor="message" className="block mb-1 font-medium">
             MESSAGE
           </label>
           <textarea

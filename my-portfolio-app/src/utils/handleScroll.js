@@ -6,7 +6,7 @@
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
       }
-    }, 200);
+    }, 0);
   };
   
   export default handleScroll;

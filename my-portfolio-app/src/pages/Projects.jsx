@@ -13,7 +13,6 @@ import { useNavigate } from "react-router-dom";
 import handleScroll from "../utils/handleScroll";
 import { useTab } from "../utils/TabContext";
 const Projects = () => {
-  
   const projects = ProjectData;
   const [sortType, setSortType] = useState("asc");
   const [sortedProjects, setSortedProjects] = useState(projects);
@@ -38,7 +37,7 @@ const Projects = () => {
 
   return (
     <>
-      <div className="w-full h-screen flex flex-col items-center justify-center gap-4 py-4">
+      <div className="w-full flex flex-col items-center justify-center gap-4 py-24">
         <h1>
           <TextGradient
             text="My Projects"
@@ -59,7 +58,7 @@ const Projects = () => {
             />
           </div>
         </div>
-        <div className="w-[80%] h-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="w-[80%] md:h-auto grid grid-cols-1 md:grid-cols-2 gap-8">
           {displayedProjects.map((project) => (
             <div className="w-full h-auto">
               <ProjectCard {...project} />

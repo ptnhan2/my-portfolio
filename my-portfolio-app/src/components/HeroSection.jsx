@@ -22,10 +22,10 @@ const HeroSection = () => {
   };
   return (
     <>
-      <section className="md:grid md:grid-cols-4 md:grid-rows-1 md:items-center 4 md:h-screen gap-8 px-20">
-        <section className="md:col-span-2 md:w-full md:h-[60%] md:flex md:flex-col md:items-start md:gap-8">
+      <section className="flex flex-col justify-center px-4 py-16 md:py-24 gap-8 md:grid md:grid-cols-4 md:grid-rows-1 md:items-center md:gap-8 md:px-20">
+        <section className="flex flex-col gap-2 items-center text-center md:col-span-2 md:w-full md:flex md:flex-col md:items-start md:text-left md:gap-8">
           <div className="md:w-full">
-            <h1 className="font-ibm md:text-7xl">
+            <h1 className="font-ibm text-4xl md:text-7xl">
               MY NAME IS <span className="font-bold">PHAN THIEN NHAN...</span>
             </h1>
           </div>
@@ -38,7 +38,7 @@ const HeroSection = () => {
             <button
               onClick={() => handleOnClick()}
               type="submit"
-              className="text-white text-sm px-6 py-2 bg-black flex items-center gap-2"
+              className="hidden md:flex text-white text-sm px-6 py-2 bg-black flex  md:items-center gap-2"
             >
               Let's talk with me
               <Arrow />
@@ -48,9 +48,9 @@ const HeroSection = () => {
             <ShortIntro />
           </div>
         </section>
-        <section className="md:col-span-2 flex flex-row items-center justify-between">
-          <section>
-            <div className="relative w-full h-auto mt-10">
+        <section className="flex flex-col items-center md:col-span-2 md:flex md:flex-row md:items-center md:justify-between">
+          <section className="flex flex-col items-center">
+            <div className="relative w-2/3 aspect-square md:w-full md:h-auto md:mt-10">
               <img
                 src={Overlay01}
                 alt="Avatar Overlay"
@@ -59,22 +59,36 @@ const HeroSection = () => {
               <img
                 src={Avatar2}
                 alt="Avatar"
-                className="absolute inset-0 w-full h-full object-cover top-[-80px] left-[-20px]"
+                className="absolute inset-0 w-full h-full object-cover top-[-30px] md:top-[-80px] md:left-[-20px]"
               />
               <img
                 src={Overlay02}
                 alt="Avatar Overlay"
-                className="absolute inset-0 w-full h-full  top-[7px]"
+                className="absolute inset-0 w-full h-full top-[4px]  md:top-[7px]"
               />
             </div>
           </section>
 
-          <section className="justify-self-end">
-            <div className="flex flex-col gap-6 justify-self-center">
+          <section>
+            <button
+              onClick={() => handleOnClick()}
+              type="submit"
+              className="text-white text-sm px-6 py-2 bg-black flex  md:hidden gap-2"
+            >
+              Let's talk with me
+              <Arrow />
+            </button>
+          </section>
+          <section className="md:justify-self-end">
+            <div className="flex flex-row md:flex-col gap-2 md:gap-6 justify-self-center ">
               {socialLink.map((item) => {
                 return (
-                  <button to={item.link} target="_blank">
-                    <div className="text-2xl text-black">{item.icon}</div>
+                  <button
+                    to={item.link}
+                    target="_blank"
+                    className="bg-transparent"
+                  >
+                    <div className="text-4xl text-black">{item.icon}</div>
                   </button>
                 );
               })}

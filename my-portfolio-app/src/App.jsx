@@ -13,9 +13,9 @@ function App() {
     <>
       <BrowserRouter>
         <TabProvider>
-          <div className="flex flex-col md:flex-row bg-white font-ibm text-black scroll-smooth">
+          <div className="overflow-y-hidden overflow-x-hidden flex flex-col md:flex-row bg-white font-ibm text-black scroll-smooth">
             <Navbar />
-            <div className="pt-20 md:pl-[15%] md:pt-0 w-full ">
+            <div className="pt-6 md:pl-[15%] md:pt-0 w-full ">
               <Routes>
                 <Route path="*" element={<Home />} />
                 {/* <Route path="/about" element={<About />} />

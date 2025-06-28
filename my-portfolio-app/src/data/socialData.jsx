@@ -1,6 +1,7 @@
 import { AiFillFacebook } from "react-icons/ai";
 import { AiFillLinkedin } from "react-icons/ai";
 import { AiFillGithub } from "react-icons/ai";
+import { FaGithubSquare } from "react-icons/fa";
 
 const socialLink = [
   {

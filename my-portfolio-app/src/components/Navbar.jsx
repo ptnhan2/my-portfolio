@@ -2,6 +2,7 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import handleScroll from "../utils/handleScroll";
 import { useTab } from "../utils/TabContext";
+import { AiOutlineMenuFold, AiOutlineMenuUnfold } from "react-icons/ai";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -52,46 +53,55 @@ const Navbar = () => {
   // }, [location.pathname]);
 
   return (
-    <nav
-      className={`w-full md:w-[15%] md:box-border h-screen md:bg-black uppercase ${
-        isOpen ? "bg-blue-500" : "bg-white"
-      } p-4 fixed top-0 left-0 z-50 `}
-    >
+    <>
+      {" "}
       <button
-        onClick={() => handleNavigation({ section: "home" })}
-        className="bg-black text-white text-4xl md:block hidden"
-      >
-        TN
-      </button>
-      <button
-        className="text-black md:hidden"
+        className={`text-black bg-transparent md:hidden py-2 px-4  fixed  top-1 left-1 z-50 ${
+          isOpen ? "text-white border-2 border-white" : ""
+        } md:hidden`}
         onClick={() => setIsOpen(!isOpen)}
       >
-        {isOpen ? "X" : "Menu"}
+        {isOpen ? (
+          <AiOutlineMenuFold className="text-2xl" />
+        ) : (
+          <AiOutlineMenuUnfold className="text-2xl" />
+        )}
       </button>
+      <nav
+        className={`w-1/2 md:w-[15%] md:box-border h-screen md:bg-black uppercase ${
+          isOpen ? "bg-black" : "hidden md:block"
+        } p-4 fixed top-0 left-0 z-10 `}
+      >
+        <button
+          onClick={() => handleClick({ section: "home" })}
+          className="w-full text-left justify-start p-4 bg-black text-white mt-8 text-4xl md:block"
+        >
+          TN
+        </button>
 
-      <ul className={` md:block md:bg-black  ${isOpen ? "block" : "hidden"}`}>
-        {navLinks.map((link) => (
-          <li key={link.section}>
-            <button
-              className="text-white bg-transparent w-full hover:text-[#B86ADF] hover:text-[#FF6C63] font-medium flex items-start md:py-6 md:px-4 border-box"
-              onClick={() => handleClick(link)}
-            >
-              {activeTab === link.section ? (
-                <div className="relative inline-block grid grid-cols-1 grid-rows-1 place-items-center ">
-                  <div className=" col-start-1 row-start-1 h-1 w-full  bg-gradient-to-r from-[#B86ADF] via-[#FF6C63] to-[#FFB147]" />
-                  <div className="col-start-1 row-start-1 text-white">
-                    {link.label}
+        <ul className={` md:block md:bg-black  ${isOpen ? "block" : "hidden"}`}>
+          {navLinks.map((link) => (
+            <li key={link.section}>
+              <button
+                className="text-white bg-transparent w-full hover:text-[#B86ADF] hover:text-[#FF6C63] font-medium flex items-start md:py-6 md:px-4 border-box"
+                onClick={() => handleClick(link)}
+              >
+                {activeTab === link.section ? (
+                  <div className="relative inline-block grid grid-cols-1 grid-rows-1 place-items-center ">
+                    <div className=" col-start-1 row-start-1 h-1 w-full  bg-gradient-to-r from-[#B86ADF] via-[#FF6C63] to-[#FFB147]" />
+                    <div className="col-start-1 row-start-1 text-white">
+                      {link.label}
+                    </div>
                   </div>
-                </div>
-              ) : (
-                <div className="col-start-1 row-start-1">{link.label}</div>
-              )}
-            </button>
-          </li>
-        ))}
-      </ul>
-    </nav>
+                ) : (
+                  <div className="col-start-1 row-start-1">{link.label}</div>
+                )}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </>
   );
 };
 
