@@ -33,20 +33,20 @@ const FilterButton = ({ isOpen, onToggle, onChoice }) => {
         <button
           onClick={onToggle}
           id="filter"
-          className="flex flex-row items-center gap-2 "
+          className="flex flex-row items-center gap-2 bg-black text-white"
         >
           <label htmlFor="filter">Filter</label>
 
           <AiOutlineFilter />
         </button>
         {isOpen ? (
-          <div className="absolute top-10 right-0 w-[200px] h-[200px]  overflow-auto bg-slate-100">
+          <div className="absolute top-10 right-0 w-[200px] h-[200px] bg-white border-2 overflow-auto">
             <ul ref={dropDownRef} className="p-2">
               {filterArr.map((filter) => {
                 return (
                   <li className="p-1">
                     <button
-                      className="w-full h-auto"
+                      className="w-full h-auto bg-black text-white p-2"
                       key={filter}
                       onClick={() => {
                         onChoice(filter);

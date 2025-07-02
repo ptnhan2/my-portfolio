@@ -8,7 +8,7 @@ import Email from "../components/Icons/Email";
 const Contact = () => {
   return (
     <>
-      <div className="w-full flex flex-col items-center lg:flex-row lg:justify-start lg:items-center gap-8 px-4 lg:px-20 py-8 lg:py-24">
+      <div className="w-full flex flex-col items-center lg:flex-row lg:justify-start lg:items-center gap-8 px-4 lg:px-20 py-8 lg:py-44">
         <div className="lg:w-1/2 flex flex-col items-center lg:items-start gap-2 lg:gap-16">
           <div className="flex flex-col items-center lg:items-start">
             <div className="font-bold italic">Contact</div>

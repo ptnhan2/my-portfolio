@@ -10,6 +10,7 @@ import { motion } from "framer-motion";
 import { useEffect, useLayoutEffect, useState, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import handleScroll from "../utils/handleScroll";
+import { useTab } from "../utils/TabContext";
 const fadeUp = {
   hidden: { opacity: 0, y: 60 },
   visible: { opacity: 1, y: 0, transition: { duration: 2, ease: "easeOut" } },
@@ -27,6 +28,7 @@ const Home = () => {
   const lastMousePos = useRef({ x: 0, y: 0 });
   const location = useLocation();
 
+  const { setActiveTab } = useTab();
   useEffect(() => {
     const handleMouseMove = (e) => {
       lastMousePos.current = { x: e.clientX, y: e.clientY };
@@ -114,8 +116,12 @@ const Home = () => {
         if (visible) {
           const id = visible.target.id;
           console.log("inside observer: ", visible.target);
+          // if (location.pathname !== `/${id}`) {
+          //   navigate(`/${id}`, { replace: true });
+          // }
           navigate(`/${id}`, { replace: true });
 
+          setActiveTab(id);
           // const newPath = `/${id}`;
 
           // if (location.pathname !== newPath) {

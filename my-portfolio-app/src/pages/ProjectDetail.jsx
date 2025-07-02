@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import { useLayoutEffect } from "react";
 import projectData from "../data/ProjectData";
 import {
   FaClipboard,
@@ -21,6 +22,11 @@ const ProjectDetail = () => {
     responsibility: <FaTasks />,
     screen: <FaImages />,
   };
+
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" }); // hoặc smooth
+  }, []);
+
   return (
     <div className="w-full min-h-screen py-8 px-4 flex justify-center bg-gray-50">
       <div className="w-full max-w-4xl flex flex-col gap-8 bg-white p-6 rounded-lg shadow-md">
@@ -32,7 +38,7 @@ const ProjectDetail = () => {
           <img
             src={project.image}
             alt={`${project.name} Main`}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain"
           />
         </div>
 
@@ -77,9 +83,11 @@ const ProjectDetail = () => {
           <h2 className="text-xl font-semibold mb-2 inline-flex items-center gap-2">
             {sectionIcons.responsibility} My Responsibilities
           </h2>
-          <p className="text-justify leading-relaxed text-gray-700">
-            {project.responsibilities}
-          </p>
+          {project.responsibilities.map((responsibility, index) => (
+            <p className="text-justify leading-relaxed text-gray-700">
+              - {responsibility}
+            </p>
+          ))}
         </section>
 
         {/* Video Demo (optional) */}

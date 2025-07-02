@@ -7,8 +7,8 @@ const SortButton = ({ sortType, onToggle }) => {
   console.log(sortType);
   return (
     <>
-      <div className="flex flex-row items-center">
-        <button onClick={onToggle} id="sort">
+      <div className="flex flex-row items-center bg-black text-white pr-4 py-1">
+        <button onClick={onToggle} id="sort" className="bg-black text-white">
           {sortType == "asc" ? (
             <AiOutlineSortAscending />
           ) : (

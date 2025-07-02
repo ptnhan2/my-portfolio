@@ -37,7 +37,7 @@ const Projects = () => {
 
   return (
     <>
-      <div className="w-full flex flex-col items-center justify-center gap-4 py-24">
+      <div className="w-full flex flex-col items-center justify-center gap-6 py-24">
         <h1>
           <TextGradient
             text="My Projects"
@@ -58,7 +58,7 @@ const Projects = () => {
             />
           </div>
         </div>
-        <div className="w-[80%] md:h-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="w-[80%] md:h-auto grid grid-cols-1 md:grid-cols-2 gap-8 place-items-center">
           {displayedProjects.map((project) => (
             <div className="w-full h-auto">
               <ProjectCard {...project} />

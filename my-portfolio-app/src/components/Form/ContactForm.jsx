@@ -71,6 +71,7 @@ const ContactForm = () => {
             <input
               name="user_name"
               type="text"
+              required
               id="name"
               placeholder="Your name"
               className="text-sm bg-transparent w-full border-b border-white px-2 py-2 focus:outline-none focus:ring-0 focus:border-white"
@@ -85,6 +86,7 @@ const ContactForm = () => {
             <input
               name="user_email"
               type="email"
+              required
               id="email"
               placeholder="you@example.com"
               className="text-sm bg-transparent w-full border-b border-white px-2 py-2 focus:outline-none focus:ring-0 focus:border-white"
@@ -100,6 +102,7 @@ const ContactForm = () => {
           <textarea
             name="message"
             id="message"
+            required
             rows="2"
             className="text-sm bg-transparent w-full border-b border-white px-2 py-2 resize-none focus:outline-none focus:ring-0 focus:border-white"
           ></textarea>

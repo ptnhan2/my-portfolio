@@ -1,5 +1,5 @@
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import handleScroll from "../utils/handleScroll";
 import { useTab } from "../utils/TabContext";
 import { AiOutlineMenuFold, AiOutlineMenuUnfold } from "react-icons/ai";
@@ -40,12 +40,17 @@ const Navbar = () => {
 
   const handleClick = (link) => {
     setActiveTab(link.section);
-    navigate(link.to);
+    if (location.pathname !== link.to) {
+      navigate(link.to);
+    }
     setTimeout(() => {
       handleScroll(link.section);
     }, 200);
   };
 
+  // useLayoutEffect(() => {
+  //   setActiveTab(location.pathname);
+  // }, []);
   // useEffect(() => {
   //   if (location.pathname === "/home") {
   //     setActiveTab("home");

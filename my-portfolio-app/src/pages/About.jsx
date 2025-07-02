@@ -19,7 +19,7 @@ import SkillGroup from "../components/Experience/SkillGroup";
 import handleScroll from "../utils/handleScroll";
 import { useNavigate } from "react-router-dom";
 import { useTab } from "../utils/TabContext";
-
+import Resume from "../assets/ptn-resume.pdf";
 const About = () => {
   const { setActiveTab } = useTab();
   const navigate = useNavigate();
@@ -31,7 +31,7 @@ const About = () => {
     }, 200);
   };
   return (
-    <section className="flex flex-col justify-center px-4 py-16 lg:px-24 gap-8 lg:w-full lg:grid lg:grid-cols-5 lg:gap-8 lg:px-4 lg:items-center lg:pr-32">
+    <section className="flex flex-col justify-center px-4 py-16 lg:py-24 lg:px-24 gap-8 lg:w-full lg:grid lg:grid-cols-5 lg:gap-8 lg:px-4 lg:items-center lg:pr-32">
       <div className="flex flex-col items-center gap-4 col-span-2">
         <div className="text-left">
           <div className="font-medium">Nice to meet you!</div>
@@ -42,7 +42,11 @@ const About = () => {
         </div>
         <Name />
         <JobTitle />
-        <div className="mt-2 text-sm font-semibold underline">Download CV</div>
+        <a href={Resume} target="_blank">
+          <div className="mt-2 text-sm font-semibold underline text-black">
+            Download CV
+          </div>
+        </a>
       </div>
 
       <div className="col-span-3 flex flex-col gap-6">
