@@ -35,7 +35,7 @@ import EM_BuyTicket from "../assets/ScreenListEticketManagement/BuyTicket.png";
 
 // === Hotel Management Screens ===
 import HM_Bill from "../assets/ScreenListHotelManagement/Bill.png";
-import HM_CheckIn from "../assets/ScreenListHotelManagement/CheckIn.png";
+import HM_Checkin from "../assets/ScreenListHotelManagement/Checkin.png";
 import HM_Checkout from "../assets/ScreenListHotelManagement/Checkout.png";
 import HM_Coupon from "../assets/ScreenListHotelManagement/Coupon.png";
 import HM_CreateRule from "../assets/ScreenListHotelManagement/CreateRule.png";
@@ -234,7 +234,7 @@ const ProjectData = [
         imgSrc: HM_Bill
       },
       {imgName:"CheckIn",
-        imgSrc: HM_CheckIn
+        imgSrc: HM_Checkin
       },
       {imgName:"Checkout",
         imgSrc: HM_Checkout
