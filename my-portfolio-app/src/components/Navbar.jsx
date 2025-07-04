@@ -19,6 +19,7 @@ const Navbar = () => {
     // { to: "/playground", label: "PLAYGROUND", section: "playground" },
     // { to: "/resume", label: "RESUME", section: "resume" },
   ];
+
   // const handleNavigation = (link) => {
   //   if (
   //     location.pathname !== "/" &&
@@ -41,11 +42,14 @@ const Navbar = () => {
   const handleClick = (link) => {
     setActiveTab(link.section);
     if (location.pathname !== link.to) {
+      console.log("LINK IN HANDLECLICK IS: ", link);
       navigate(link.to);
     }
-    setTimeout(() => {
-      handleScroll(link.section);
-    }, 200);
+    handleScroll(link.section);
+
+    // setTimeout(() => {
+    //   handleScroll(link.section);
+    // }, 0);
   };
 
   // useLayoutEffect(() => {

@@ -5,7 +5,7 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 
 const ProjectCard = ({ id, name, techStack, image }) => {
   return (
-    <Link to={`/projects/${id}`}>
+    <Link to={`${id}`}>
       <div className="text-black w-full h-auto overflow-hidden flex flex-col gap-4 md:gap-0 md:flex-row items-center justify-center bg-white ">
         {/* Left: Text Content */}
         <div className="@container w-full md:w-1/3 pr-4 flex flex-col items-center min-w-0 md:items-start justify-between order-1">

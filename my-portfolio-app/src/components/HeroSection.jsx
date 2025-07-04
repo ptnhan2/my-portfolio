@@ -31,7 +31,7 @@ const HeroSection = () => {
           </div>
           <div>
             <h2>
-              I'm a <strong> Frontend Developer </strong>based in Vietnam
+              I'm a <strong> Developer </strong>based in Vietnam
             </h2>
           </div>
           <div>
