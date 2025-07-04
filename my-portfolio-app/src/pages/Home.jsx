@@ -28,7 +28,13 @@ const Home = () => {
   const lastMousePos = useRef({ x: 0, y: 0 });
   const location = useLocation();
 
-  const { setActiveTab } = useTab();
+  const { activeTab, setActiveTab } = useTab();
+
+  useLayoutEffect(() => {
+    console.log("ACTIVE TAB IN LAYOUTEFFECT: ", activeTab);
+    handleScroll(activeTab);
+  }, []);
+
   useEffect(() => {
     const handleMouseMove = (e) => {
       lastMousePos.current = { x: e.clientX, y: e.clientY };
@@ -73,7 +79,7 @@ const Home = () => {
         }
       },
       {
-        threshold: 0.9, // 50% của phần tử phải hiển thị mới tính là "đến nơi"
+        threshold: 0.9, // 90% của phần tử phải hiển thị mới tính là "đến nơi"
       }
     );
     if (sectionsRef.contact.current) {
@@ -90,10 +96,6 @@ const Home = () => {
       }
     };
   }, []);
-  // const handleSelectLanguage = (lang) => {
-  //   setIsGiftOpen(false);
-  //   setSelectedLanguage(lang);
-  // };
 
   const handleGiftPopupClose = () => {
     setIsGiftBottomPopupOpen(false);
@@ -109,30 +111,24 @@ const Home = () => {
     contact: useRef(),
   };
   const navigate = useNavigate();
-  useEffect(() => {
+  useLayoutEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries.find((entry) => entry.isIntersecting);
         if (visible) {
           const id = visible.target.id;
           console.log("inside observer: ", visible.target);
-          // if (location.pathname !== `/${id}`) {
-          //   navigate(`/${id}`, { replace: true });
-          // }
+
           navigate(`/${id}`, { replace: true });
 
           setActiveTab(id);
-          // const newPath = `/${id}`;
-
-          // if (location.pathname !== newPath) {
-          //   navigate(newPath, { replace: true });
-          // }
         }
       },
       {
         threshold: 0.5,
       }
     );
+
     Object.values(sectionsRef).forEach((ref) => {
       if (ref.current) observer.observe(ref.current);
     });
@@ -145,7 +141,7 @@ const Home = () => {
   }, []);
 
   return (
-    <section className="scroll-smooth flex flex-col h-auto gap-4">
+    <section className="flex flex-col h-auto gap-4">
       <motion.div
         variants={fadeUp}
         initial="hidden"

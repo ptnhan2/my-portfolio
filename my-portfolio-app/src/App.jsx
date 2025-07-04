@@ -8,6 +8,7 @@ import ProjectDetail from "./pages/ProjectDetail";
 import Resume from "./pages/Resume";
 import Navbar from "./components/Navbar";
 import { TabProvider, useTab } from "./utils/TabContext";
+
 function App() {
   return (
     <>
@@ -17,11 +18,11 @@ function App() {
             <Navbar />
             <div className="pt-6 md:pl-[15%] md:pt-0 w-full ">
               <Routes>
-                <Route path="*" element={<Home />} />
+                <Route path="/*" element={<Home />} />
                 {/* <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/playground" element={<Playground />} />
-              <Route path="/projects" element={<Projects />} /> */}
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/playground" element={<Playground />} />
+                <Route path="/projects" element={<Projects />} /> */}
                 <Route path="/projects/:id" element={<ProjectDetail />} />
                 {/* <Route path="/resume" element={<Resume />} /> */}
               </Routes>

@@ -12,6 +12,8 @@ import TextGradient from "../components/Text/TextGradient";
 import { useNavigate } from "react-router-dom";
 import handleScroll from "../utils/handleScroll";
 import { useTab } from "../utils/TabContext";
+import { Outlet } from "react-router-dom";
+
 const Projects = () => {
   const projects = ProjectData;
   const [sortType, setSortType] = useState("asc");
@@ -66,6 +68,7 @@ const Projects = () => {
           ))}
         </div>
       </div>
+      <Outlet />
     </>
   );
 };
